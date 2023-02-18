@@ -1,0 +1,23 @@
+.breadcrumb-item {
+    box-sizing: border-box;
+    border-bottom: 2px solid rgb(0, 174, 255);
+    cursor: pointer;
+    color: rgb(0, 174, 255);
+}
+
+.breadcrumb-item:hover {
+    border-color: rgb(0, 81, 118);
+    color: rgb(0, 81, 118);
+}
+.activeX {
+    border: none !important;
+    color: #000;
+}
+
+.activeX:hover {
+    color: #000;
+}
+
+#validationFeedback{
+    display: none;
+}
