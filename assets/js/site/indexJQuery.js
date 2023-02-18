@@ -1,6 +1,6 @@
 /// <reference types="jquery" />
 
-
+//document variables
 
 let inputName = $("#name")
 let inputState = $("#state")
@@ -30,6 +30,18 @@ $("#content-container").on("click", ".breadcrumb-item:first", function () {
   }
 })
 
+$("#content-container").on("click", ".secondBreadCrumb", function () {
+  
+  if ($("#coursesCard").length == 0) {
+  
+    $(".breadcrumb-item")[2].remove()
+    $(".breadcrumb-item")[1].remove()
+    $(".card")[0].remove()
+
+    goCourses()
+  }
+})
+
 $("#content-container").on("click", "#btnCoursesContinue", function () {
   goConfirm()
 })
@@ -37,14 +49,14 @@ $("#content-container").on("click", "#btnCoursesContinue", function () {
 function goConfirm() {
 
   const li = document.createElement('li')
-  $(li).addClass("breadcrumb-item activeX")
+  $(li).addClass("breadcrumb-item activeX ")
   li.innerText = 'Confirmacion'
-
-  breadCrumb.children([0]).removeClass('activeX')
+  
+  breadCrumb.children([1]).removeClass('activeX')
   breadCrumb.append(li)
 
+  $("#content-container").append(generateConfirmationCard())
   $("#coursesCard").remove()
-  $("#coursesCard").parent().append('hola')
 
 }
 
@@ -112,20 +124,22 @@ function goHome() {
   li.innerText = 'Datos Persnales'
 
   breadCrumb.children([1]).remove()
+  breadCrumb.children([2]).remove()
   breadCrumb.append(li)
-
+  
   $("#content-container").append(formCard)
   $("#coursesCard").remove()
 }
 
 function goCourses() {
   
-
+ 
   const li = document.createElement('li')
-  $(li).addClass("breadcrumb-item activeX")
+  $(li).addClass("breadcrumb-item activeX secondBreadCrumb")
   li.innerText = 'Seleccion de Materias'
-
+  
   breadCrumb.children([0]).removeClass('activeX')
+  alert(breadCrumb.children.length)
   breadCrumb.append(li)
 
   $("#content-container").append(coursesCard)
@@ -134,13 +148,13 @@ function goCourses() {
 }
 
 function coursesSchedule() {
-
+  
   const courses = {
     Multimedia: ['Photoshop', 'Sasdas', 'xxx'],
     Software: ['Prog 1', 'Prog 2', 'sdd'],
     SeguridadSoftware: ['Prog 3', 'CCNA 2', 'CCNA 3']
   }
-
+  
   for (course in courses) {
 
     if (inputCareer == course) {
@@ -165,6 +179,43 @@ function coursesSchedule() {
     }
   }
 }
+
+function generateConfirmationCard(){
+  return confirmationCard = `   <div class="card">
+<div class="card-header bg-success text-white fw-bold fs-4">
+  Confirmacion
+</div>
+<div class="card-body">
+  <div class="card">
+    <div class="card-header bg-primary text-white fs-5">
+      Datos basicos
+    </div>
+    <div class="card-body px-0 py-0">
+      <div class="border border1 paddingD">
+        <h6>Nombre: ${inputName}</h6>
+      </div>
+      <div class="border border1 paddingD">
+        <h6>Provincia: ${inputState}</h6>
+      </div>
+      <div class="border border1 paddingD">
+        <h6>Ciudad: ${inputCity}</h6>
+      </div>
+      <div class="border border1 paddingD">
+        <h6>Sector: ${inputDistrict}</h6>
+      </div>
+      <div class="border border1 paddingD">
+        <h6>Calle: ${inputStreet}</h6>
+      </div>
+      <div class="border border1 paddingD">
+        <h6>Carrera: ${inputCareer}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+</div>`
+}
+
+
 
 function generateAccordion(acordionTittle, headingId, collapseId, dateCourse) {
 
@@ -206,3 +257,5 @@ const coursesCard = `
     <button class="btn btn-primary mt-3 float-end" id="btnCoursesContinue">Aceptar</button>
   </div>
 </div>`
+
+

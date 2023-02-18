@@ -14,6 +14,10 @@
     color: #000;
 }
 
+.paddingD {
+    padding: 0.5rem 0.8rem;
+}
+
 .activeX:hover {
     color: #000;
 }
