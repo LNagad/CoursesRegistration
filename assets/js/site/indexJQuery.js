@@ -194,9 +194,9 @@ function goCourses() {
 function coursesSchedule() {
   coursesList = []
   const courses = {
-    Multimedia: ['Photoshop', 'Sasdas', 'xxx'],
-    Software: ['Prog 1', 'Prog 2', 'sdd'],
-    SeguridadSoftware: ['Prog 3', 'CCNA 2', 'CCNA 3']
+    Multimedia: ['Intro to Photoshop', 'UI/UX Design', 'Avanced Tools for Designer'],
+    Software: ['PC fundamentals', 'Programacion 2', 'Programacion 3'],
+    SeguridadSoftware: ['Programacion 2', 'CCNA', 'CCNA 2']
   }
   
   for (course in courses) {
