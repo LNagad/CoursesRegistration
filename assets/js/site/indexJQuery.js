@@ -9,7 +9,7 @@ let inputDistrict = $("#district")
 let inputStreet = $("#street")
 let inputCareer = $("#career")
 
-
+let coursesList = []
 let formCard = $("#formCard")
 const fatherContainer = formCard.parent()
 const breadCrumb = $(".breadcrumb")
@@ -25,7 +25,7 @@ $("#content-container").on("click", "#registerBTN", function () {
 $("#content-container").on("click", ".breadcrumb-item:first", function () {
   
   if ($("#formCard").length == 0) {
-    
+    removeConfirmationCard()
     goHome()
   }
 })
@@ -36,8 +36,7 @@ $("#content-container").on("click", ".secondBreadCrumb", function () {
   
     $(".breadcrumb-item")[2].remove()
     $(".breadcrumb-item")[1].remove()
-    $(".card")[0].remove()
-
+    removeConfirmationCard()
     goCourses()
   }
 })
@@ -56,9 +55,54 @@ function goConfirm() {
   breadCrumb.append(li)
 
   $("#content-container").append(generateConfirmationCard())
+  $("#content-container").append(generateTableSchedule())
   $("#coursesCard").remove()
 
 }
+
+function generateTableSchedule() {
+  return `<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Asignatura</th>
+      <th scope="col">Lu</th>
+      <th scope="col">Ma</th>
+      <th scope="col">Mi</th>
+      <th scope="col">Ju</th>
+      <th scope="col">Vi</th>
+      <th scope="col">Sa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">${coursesList[0]}</td>
+      <td>18:50</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2">${coursesList[1]}</td>
+      <td></td>
+      <td>18:50</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2">${coursesList[2]}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>18:50</td>
+     
+    </tr>
+  </tbody>
+</table>`
+}
+
 
 function Register() {
   if (Validate()) {
@@ -133,7 +177,7 @@ function goHome() {
 
 function goCourses() {
   
- 
+  
   const li = document.createElement('li')
   $(li).addClass("breadcrumb-item activeX secondBreadCrumb")
   li.innerText = 'Seleccion de Materias'
@@ -148,7 +192,7 @@ function goCourses() {
 }
 
 function coursesSchedule() {
-  
+  coursesList = []
   const courses = {
     Multimedia: ['Photoshop', 'Sasdas', 'xxx'],
     Software: ['Prog 1', 'Prog 2', 'sdd'],
@@ -165,8 +209,9 @@ function coursesSchedule() {
 
       let counter = 0;
 
-      courses[course].forEach(element => {
 
+      courses[course].forEach(element => {
+        coursesList.push(element)
         $("#accordionExample").append(generateAccordion(
           element, 
           headings[counter], 

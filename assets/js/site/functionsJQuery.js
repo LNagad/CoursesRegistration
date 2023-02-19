@@ -40,3 +40,8 @@ function inputValidate(input, value, isValid) {
         return true;
     }
 }
+
+function removeConfirmationCard() {
+    $(".card")[0].remove()
+    $(".table").remove()
+}
