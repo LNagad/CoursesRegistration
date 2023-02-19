@@ -61,6 +61,25 @@ function goConfirm() {
 }
 
 function generateTableSchedule() {
+  const dateCourseOneInput = $('input[name="dateCourseOne"]')
+  const dateCourseTwoInput = $('input[name="dateCourseTwo"]')
+  const dateCourseThreeInput = $('input[name="dateCourseThree"]')
+  let dateCourseOne = $('input[name="dateCourseOne"]').val()
+  let dateCourseTwo = $('input[name="dateCourseTwo"]').val()
+  let dateCourseThree = $('input[name="dateCourseThree"]').val()
+
+  if (!dateCourseOneInput.is(':checked')) {
+    dateCourseOne = ""
+  }
+  if (!dateCourseTwoInput.is(':checked')) {
+    dateCourseTwo = ""
+    
+  }
+  if (!dateCourseThreeInput.is(':checked')) {
+    dateCourseThree = ""
+    
+  }
+
   return `<table class="table">
   <thead>
     <tr>
@@ -75,28 +94,32 @@ function generateTableSchedule() {
   </thead>
   <tbody>
     <tr>
-      <td colspan="2">${coursesList[0]}</td>
-      <td>18:50</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="2">${coursesList[1]}</td>
-      <td></td>
-      <td>18:50</td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="2">${coursesList[2]}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>18:50</td>
+      <td>${coursesList[0]}</td>
+      // 18:50 
+      <td>${dateCourseOne.substring(0, 2) == "Lu" ? dateCourseOne.slice(2) : ""}</td>
+      <td>${dateCourseOne.substring(0, 2) == "Ma" ? dateCourseOne.slice(2) : ""}</td>
+      <td>${dateCourseOne.substring(0, 2) == "Mi" ? dateCourseOne.slice(2) : ""}</td>
+      <td>${dateCourseOne.substring(0, 2) == "Ju" ? dateCourseOne.slice(2) : ""}</td>
+      <td>${dateCourseOne.substring(0, 2) == "Vi" ? dateCourseOne.slice(2) : ""}</td>
+      <td>${dateCourseOne.substring(0, 2) == "Sa" ? dateCourseOne.slice(2) : ""}</td>
+      </tr>
+      <tr>
+      <td>${coursesList[1]}</td>
+      <td>${dateCourseTwo.substring(0, 2) == "Lu" ? dateCourseTwo.slice(2) : ""}</td>
+      <td>${dateCourseTwo.substring(0, 2) == "Ma" ? dateCourseTwo.slice(2) : ""}</td>
+      <td>${dateCourseTwo.substring(0, 2) == "Mi" ? dateCourseTwo.slice(2) : ""}</td>
+      <td>${dateCourseTwo.substring(0, 2) == "Ju" ? dateCourseTwo.slice(2) : ""}</td>
+      <td>${dateCourseTwo.substring(0, 2) == "Vi" ? dateCourseTwo.slice(2) : ""}</td>
+      <td>${dateCourseTwo.substring(0, 2) == "Sa" ? dateCourseTwo.slice(2) : ""}</td>
+      </tr>
+      <tr>
+      <td>${coursesList[2]}</td>
+      <td>${dateCourseThree.substring(0, 2) == "Lu" ? dateCourseThree.slice(2) : ""}</td>
+      <td>${dateCourseThree.substring(0, 2) == "Ma" ? dateCourseThree.slice(2) : ""}</td>
+      <td>${dateCourseThree.substring(0, 2) == "Mi" ? dateCourseThree.slice(2) : ""}</td>
+      <td>${dateCourseThree.substring(0, 2) == "Ju" ? dateCourseThree.slice(2) : ""}</td>
+      <td>${dateCourseThree.substring(0, 2) == "Vi" ? dateCourseThree.slice(2) : ""}</td>
+      <td>${dateCourseThree.substring(0, 2) == "Sa" ? dateCourseThree.slice(2) : ""}</td>
      
     </tr>
   </tbody>
@@ -177,7 +200,6 @@ function goHome() {
 
 function goCourses() {
   
-  
   const li = document.createElement('li')
   $(li).addClass("breadcrumb-item activeX secondBreadCrumb")
   li.innerText = 'Seleccion de Materias'
@@ -193,6 +215,7 @@ function goCourses() {
 
 function coursesSchedule() {
   coursesList = []
+
   const courses = {
     Multimedia: ['Intro to Photoshop', 'UI/UX Design', 'Avanced Tools for Designer'],
     Software: ['PC fundamentals', 'Programacion 2', 'Programacion 3'],
