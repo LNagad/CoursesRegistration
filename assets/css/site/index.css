@@ -31,10 +31,9 @@ background-color: aliceblue;
     display: none;
 }
 
-.table-light {
-    margin-top: 40px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.tableLight {
     font-size: 18px;
+    background-color: #fff;
 }
 
 .card {

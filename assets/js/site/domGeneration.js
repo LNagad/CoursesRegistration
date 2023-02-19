@@ -10,7 +10,7 @@ const coursesCard = `
 </div>`
 
 function generateFormCard() {
-    return `   <div class="card" id="formCard">
+  return `   <div class="card" id="formCard">
     <div class="card-header bg-dark text-white fw-bold fs-5">Datos personales</div>
     <div class="card-body">
       <div id="validationFeedback" class="alert alert-danger text-center">
@@ -55,7 +55,7 @@ function generateFormCard() {
 
 function generateAccordion(acordionTittle, headingId, collapseId, dateCourse) {
 
-    return acordionItem = `  <div class="accordion-item mb-2">
+  return acordionItem = `  <div class="accordion-item mb-2">
     <h2 class="accordion-header" id="${headingId}">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}"
         aria-expanded="true" aria-controls="${collapseId}">
@@ -83,7 +83,7 @@ function generateAccordion(acordionTittle, headingId, collapseId, dateCourse) {
 }
 
 function generateConfirmationCard() {
-    return confirmationCard = `   <div class="card ">
+  return confirmationCard = `   <div class="card cardNoShadow">
   <div class="card-header bg-success text-white fw-bold fs-4">
     Confirmacion
   </div>
@@ -119,26 +119,27 @@ function generateConfirmationCard() {
 
 
 function generateTableSchedule() {
-    const dateCourseOneInput = $('input[name="dateCourseOne"]')
-    const dateCourseTwoInput = $('input[name="dateCourseTwo"]')
-    const dateCourseThreeInput = $('input[name="dateCourseThree"]')
-    let dateCourseOne = $('input[name="dateCourseOne"]').val()
-    let dateCourseTwo = $('input[name="dateCourseTwo"]').val()
-    let dateCourseThree = $('input[name="dateCourseThree"]').val()
+  const dateCourseOneInput = $('input[name="dateCourseOne"]')
+  const dateCourseTwoInput = $('input[name="dateCourseTwo"]')
+  const dateCourseThreeInput = $('input[name="dateCourseThree"]')
+  let dateCourseOne = $('input[name="dateCourseOne"]').val()
+  let dateCourseTwo = $('input[name="dateCourseTwo"]').val()
+  let dateCourseThree = $('input[name="dateCourseThree"]').val()
 
-    if (!dateCourseOneInput.is(':checked')) {
-        dateCourseOne = ""
-    }
-    if (!dateCourseTwoInput.is(':checked')) {
-        dateCourseTwo = ""
+  if (!dateCourseOneInput.is(':checked')) {
+    dateCourseOne = ""
+  }
+  if (!dateCourseTwoInput.is(':checked')) {
+    dateCourseTwo = ""
 
-    }
-    if (!dateCourseThreeInput.is(':checked')) {
-        dateCourseThree = ""
+  }
+  if (!dateCourseThreeInput.is(':checked')) {
+    dateCourseThree = ""
 
-    }
+  }
 
-    return `<table class="table table-light">
+  return `<div id="tableContainer">
+  <table class="mt-1 table tableLight border border-1">
     <thead>
       <tr>
         <th scope="col">Asignatura</th>
@@ -180,5 +181,10 @@ function generateTableSchedule() {
        
       </tr>
     </tbody>
-  </table>`
+    </table>
+    <div>
+    <button class="btn btn-success float-end btnFinalizar">Finalizar</button>
+    </div>
+    </div>
+    `
 }

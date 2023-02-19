@@ -33,7 +33,7 @@ $("#content-container").on("click", ".breadcrumb-item:first", function () {
 $("#content-container").on("click", ".secondBreadCrumb", function () {
   
   if ($("#coursesCard").length == 0) {
-  
+    
     $(".breadcrumb-item")[2].remove()
     $(".breadcrumb-item")[1].remove()
     removeConfirmationCard()
@@ -45,24 +45,32 @@ $("#content-container").on("click", "#btnCoursesContinue", function () {
   goConfirm()
 })
 
+$("#content-container").on("click", ".btnFinalizar", function () {
+  
+  if ($("#formCard").length == 0) {
+    removeConfirmationCard()
+    goHome()
+    InputReset()
+  }
+})
 function goConfirm() {
-
+  
   const li = document.createElement('li')
   $(li).addClass("breadcrumb-item activeX ")
   li.innerText = 'Confirmacion'
   
   breadCrumb.children([1]).removeClass('activeX')
   breadCrumb.append(li)
-
+  
   $("#content-container").append(generateConfirmationCard())
   $("#content-container").append(generateTableSchedule())
   $("#coursesCard").remove()
-
+  
 }
 
 function Register() {
   if (Validate()) {
-
+    
     inputName = $("#name").val()
     inputState = $("#state").val()
     inputCity = $("#city").val()

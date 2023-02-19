@@ -43,5 +43,5 @@ function inputValidate(input, value, isValid) {
 
 function removeConfirmationCard() {
     $(".card")[0].remove()
-    $(".table").remove()
+    $("#tableContainer").remove()
 }
